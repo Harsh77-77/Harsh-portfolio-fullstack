@@ -297,8 +297,6 @@
 // app.listen(PORT, () => {
 //   console.log(`Server is running on http://localhost:${PORT}`);
 // });
-
-console.log('Server starting...');
 const express = require('express');
 const mysql = require('mysql2');
 const bodyParser = require('body-parser');
@@ -306,6 +304,8 @@ const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+console.log('Server starting...');
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -323,6 +323,10 @@ db.connect(err => {
   } else {
     console.log('Connected to MySQL database');
   }
+});
+
+app.get('/api', (req, res) => {
+  res.json({ message: 'Welcome to the Contact Form API' });
 });
 
 app.get('/api/test', (req, res) => {

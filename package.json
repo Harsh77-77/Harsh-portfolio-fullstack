@@ -1,4 +1,8 @@
 {
     "private": true,
-    "workspaces": ["Backen_Portfolio", "harshportfolio"]
+    "workspaces": ["Backen_Portfolio", "harshportfolio"],
+    "scripts": {
+      "build": "cd harshportfolio && npm install && npm run build",
+      "start": "node Backen_Portfolio/server.js"
+    }
   }
