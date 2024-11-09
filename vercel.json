@@ -9,14 +9,8 @@
       "src": "harshportfolio/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "harshportfolio/dist"  
+        "distDir": "harshportfolio/dist" 
       }
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "/BACKEN_PORTFOLIO/server.js"
     }
   ]
 }
