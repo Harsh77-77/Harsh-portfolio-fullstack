@@ -298,8 +298,6 @@
 //   console.log(`Server is running on http://localhost:${PORT}`);
 // });
 
-
-
 const express = require('express');
 const mysql = require('mysql2');
 const bodyParser = require('body-parser');
@@ -309,22 +307,11 @@ const app = express();
 const PORT = 5000;
 
 // Middleware
-app.use((req, res, next) => {  
-  res.header("Access-Control-Allow-Origin", "https://portfolio-teal-eight-46.vercel.app");  
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");  
-  next();  
-});
-
-
-
-// Preflight (OPTIONS) request handling (can be explicit)
-app.options('*', (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', 'https://portfolio-teal-eight-46.vercel.app'); // Set allowed origin
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS'); // Set allowed methods
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization'); // Set allowed headers
-  res.status(200).end(); // Respond with 200 status
-});
-
+app.use(cors({
+  origin: 'http://localhost:5173', // Adjust this to match your Vite dev server port
+  methods: ['GET', 'POST'],
+  credentials: true
+}));
 app.use(bodyParser.json());
 
 // Create MySQL connection
@@ -390,3 +377,5 @@ app.use((req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+
