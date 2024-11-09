@@ -308,7 +308,7 @@ const PORT = 5000;
 
 // Middleware
 app.use(cors({
-  origin: 'http://localhost:5173', // Adjust this to match your Vite dev server port
+  origin: 'http://localhost:5173', 
   methods: ['GET', 'POST'],
   credentials: true
 }));
