@@ -297,7 +297,6 @@
 // app.listen(PORT, () => {
 //   console.log(`Server is running on http://localhost:${PORT}`);
 // });
-
 const express = require('express');
 const mysql = require('mysql2');
 const bodyParser = require('body-parser');
@@ -306,19 +305,16 @@ const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Middleware
 app.use(cors());
 app.use(bodyParser.json());
 
-// Create MySQL connection
-const db = mysql.createConnection(process.env.MYSQL_URL || {
-  host: 'localhost',
-  user: 'root',
-  password: '12345',
+const db = mysql.createConnection({
+  host: 'your-mysql-host.com',
+  user: 'your-mysql-user',
+  password: 'your-mysql-password',
   database: 'contact_db'
 });
 
-// Connect to MySQL
 db.connect(err => {
   if (err) {
     console.error('Error connecting to MySQL:', err);
@@ -327,12 +323,10 @@ db.connect(err => {
   }
 });
 
-// Root route handler
 app.get('/api', (req, res) => {
   res.json({ message: 'Welcome to the Contact Form API' });
 });
 
-// Endpoint to insert contact data
 app.post('/api/submit-contact', (req, res) => {
   const { username, email, phone_no, message } = req.body;
   
@@ -352,7 +346,6 @@ app.post('/api/submit-contact', (req, res) => {
   });
 });
 
-// Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ error: 'Something broke!' });
