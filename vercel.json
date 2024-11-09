@@ -1,23 +1,22 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "BACKEN_PORTFOLIO/server.js",
-        "use": "@vercel/node"
-      },
-      {
-        "src": "harshportfolio/package.json",
-        "use": "@vercel/static-build",
-        "config": {
-          "distDir": "harshportfolio/dist"
-        }
+  "version": 2,
+  "builds": [
+    {
+      "src": "Backen_Portfolio/server.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "harshportfolio/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "harshportfolio/dist"  
       }
-    ],
-    "rewrites": [
-      {
-        "source": "/api/(.*)",
-        "destination": "/BACKEN_PORTFOLIO/server.js"
-      }
-    ]
-  }
-  
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/BACKEN_PORTFOLIO/server.js"
+    }
+  ]
+}
