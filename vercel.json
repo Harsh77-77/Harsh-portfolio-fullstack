@@ -9,8 +9,18 @@
       "src": "harshportfolio/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "harshportfolio/dist" 
+        "distDir": "dist"
       }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "Backen_Portfolio/server.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "harshportfolio/dist/$1"
     }
   ]
 }
